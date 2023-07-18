@@ -1,0 +1,18 @@
+-- Active: 1689656747205@@127.0.0.1@3306
+DROP DATABASE IF EXISTS dbOdonto;
+
+CREATE DATABASE dbOdonto;
+
+USE dbOdonto;
+
+CREATE TABLE users (
+  id INT NOT NULL auto_increment,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  matricula INT NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role VARCHAR(255) DEFAULT 'Aluno',
+  PRIMARY KEY(id)
+) ENGINE=INNODB;
+
+SET SQL_SAFE_UPDATES = 0;

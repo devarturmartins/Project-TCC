@@ -1,4 +1,4 @@
--- Active: 1689656747205@@127.0.0.1@3306
+-- Active: 1690774493837@@localhost@3306
 DROP DATABASE IF EXISTS dbOdonto;
 
 CREATE DATABASE dbOdonto;

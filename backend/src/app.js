@@ -1,10 +1,12 @@
 const express = require('express');
 const usersRoutes = require('./routes/users.routes');
+// const teste = require('./routes/teste.routes');
 
 const app = express();
 
 app.use(express.json());
 app.use('/login', usersRoutes);
+// app.use('/teste', teste);
 // app.use('/sales', salesRoutes);
 
 // não remova esse endpoint, é para o avaliador funcionar

@@ -1,28 +1,29 @@
-version: '3.9'
+version: '3'
 services:
   backend:
+    container_name: app-backend
+    build: ./backend
+    ports:
+      - 3002:3002
     depends_on:
       - database
-    build: ./backend
     restart: always
-    ports:
-      - "3001:3001"
     environment:
-      - APP_PORT=3001
-      - JWT_SECRET=secretJWT
-      #db
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=password
-      - MYSQL_HOST=database # Nome do service logo abaixo
-      - MYSQL_PORT=3306
-      - MYSQL_DATABASE_NAME=dbOdonto
-      - PORT = 3001
+      APP_PORT: 3002
+      JWT_SECRET: secretJWT
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_HOST: localhost 
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE_NAME: dbOdonto
+      PORT: 3002
       # - API_HOST: 'backend'
       # - API_PORT: 3001
       # - NODE_ENV: 'development'
     command: dev
+    working_dir: /app-backend
     volumes:
-      - ./backend/src:/backend/src
+      - ./backend:/app-backend/backend
     networks:
       - backend-network
       
@@ -36,12 +37,13 @@ services:
 
   database:
     image: mysql:8.0.29
+    container_name: dbOdonto
+    ports:
+      - 3306:3306
     restart: always
     environment:
       # MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: password
-    ports:
-      - "3306:3306"
     networks:
       - backend-network
 

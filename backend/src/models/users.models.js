@@ -8,6 +8,15 @@ const getAll = async () => {
     return users;
     }
 
+const findOne = async (email) => {
+    const [users] = await connection.execute(
+        'SELECT * FROM users WHERE email = ?',
+        [email],
+    );
+    
+    return users;
+    }
+
 const createUsers = async (name, email, matricula, password, role) => {
     const [users] = await connection.execute(
         'INSERT INTO users (name, email, matricula, password, role) VALUES (?, ?, ?, ?, ?)',
@@ -19,5 +28,6 @@ const createUsers = async (name, email, matricula, password, role) => {
 
 module.exports = {
     getAll,
+    findOne,
     createUsers,
 };

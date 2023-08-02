@@ -1,14 +1,16 @@
 const { validateToken } = require('../auth/validateJWT');
 
 const authMiddleware = async (req, res, next) => {
-    const { authorization } = req.headers;
+    // console.log(req.cookies);
+    const { token } = req.cookies;
+    console.log(token);
     
-    if (!authorization) {
+    if (!token) {
         return res.status(401).json({ message: 'Token not found' });
     }
     
     try {
-        const isValid = validateToken(authorization);
+        const isValid = validateToken(token);
         req.user = isValid.data;
 
         if (!isValid) {

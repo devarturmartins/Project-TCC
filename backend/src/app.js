@@ -1,10 +1,12 @@
 const express = require('express');
 const usersRoutes = require('./routes/users.routes');
 const dashboardRoutes = require('./routes/dashboard.routes');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 app.use('/login', usersRoutes);
 app.use('/', dashboardRoutes);
 // app.use('/sales', salesRoutes);

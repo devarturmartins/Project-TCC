@@ -11,7 +11,7 @@ CREATE TABLE users (
   email VARCHAR(255) NOT NULL,
   matricula INT NOT NULL,
   password VARCHAR(255) NOT NULL,
-  role VARCHAR(255) DEFAULT 'Aluno',
+  role VARCHAR(255) NOT NULL,
   PRIMARY KEY (id_user)
 );
 

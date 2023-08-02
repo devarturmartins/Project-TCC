@@ -10,7 +10,7 @@ const getAll = async (req, res) => {
 const login = async (req, res) => {
     const { email, password } = req.body;
     const token = await userService.login(email, password);
-    console.log(token);
+    req.headers['authorization'] = `Bearer ${token}`;
     if (!token.message) {
         res.cookie('token', token, { maxAge: 900000, httpOnly: true });
     }
